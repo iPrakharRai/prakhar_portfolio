@@ -13,11 +13,11 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/media__1774381602984.png",
-  "/images/media__1774381603030.jpg",
-  "/images/media__1774381603045.png",
-  "/images/media__1774381603049.png",
-  "/images/media__1774381603058.jpg",
+  `${import.meta.env.BASE_URL}images/media__1774381602984.png`,
+  `${import.meta.env.BASE_URL}images/media__1774381603030.jpg`,
+  `${import.meta.env.BASE_URL}images/media__1774381603045.png`,
+  `${import.meta.env.BASE_URL}images/media__1774381603049.png`,
+  `${import.meta.env.BASE_URL}images/media__1774381603058.jpg`,
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
@@ -196,7 +196,7 @@ const TechStack = () => {
           ))}
         </Physics>
         <Environment
-          files="/models/char_enviorment.hdr"
+          files={`${import.meta.env.BASE_URL}models/char_enviorment.hdr`}
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />

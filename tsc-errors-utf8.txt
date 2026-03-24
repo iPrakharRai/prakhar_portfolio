@@ -1,0 +1,2 @@
+﻿src/components/SocialIcons.tsx(3,3): error TS6133: 'FaInstagram' is declared but its value is never read.
+src/components/SocialIcons.tsx(5,3): error TS6133: 'FaXTwitter' is declared but its value is never read.

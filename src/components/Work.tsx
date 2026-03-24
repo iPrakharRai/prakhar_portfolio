@@ -75,7 +75,7 @@ const Work = () => {
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image={`${import.meta.env.BASE_URL}images/placeholder.webp`} alt="" />
             </div>
           ))}
         </div>
