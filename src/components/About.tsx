@@ -6,9 +6,11 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-         I'm a passionate Web Developer with a strong focus on building responsive,
-         user-friendly websites and web applications. I specialize in both front-end and back-end development, 
-         using technologies like HTML, CSS, JavaScript, React, Node.js, and MongoDB.
+         Data analytics student with hands-on experience in data cleaning, analysis, and
+         visualization using Python, SQL, and Excel. Skilled in transforming raw data into actionable
+         insights through exploratory data analysis and structured reporting. Seeking entry-level
+         data analyst opportunities where data-driven decision-making and analytical thinking are
+         valued.
         </p>
       </div>
     </div>

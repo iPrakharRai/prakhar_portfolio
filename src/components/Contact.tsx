@@ -10,21 +10,21 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href="mailto:example@mail.com" data-cursor="disable">
-                04amansingh04@gmail.com
+              <a href="mailto:raiprakhar0123@gmail.com" data-cursor="disable">
+                raiprakhar0123@gmail.com
               </a>
             </p>
             <h4>Phone</h4>
             <p>
-              <a href="tel:+919076880419" data-cursor="disable">
-                +91 9076880419
+              <a href="tel:+918933975678" data-cursor="disable">
+                +91 8933975678
               </a>
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com/ORDJONAS"
+              href="https://github.com/iprakharrai"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -32,36 +32,20 @@ const Contact = () => {
               Github <MdArrowOutward />
             </a>
             <a
-              href="https://www.linkedin.com/in/aman-singh2004"
+              href="https://www.linkedin.com/in/iPrakharRai"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
             >
               Linkedin <MdArrowOutward />
             </a>
-            <a
-              href="https://x.com/_aman04_?s=09"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Twitter <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com/_.aman04._"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>Aman Singh</span>
+              Designed and Developed <br /> by <span>Prakhar Rai</span>
             </h2>
             <h5>
-              <MdCopyright /> 2025
+              <MdCopyright /> 2026
             </h5>
           </div>
         </div>

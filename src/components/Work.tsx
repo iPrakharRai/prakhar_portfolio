@@ -1,7 +1,6 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
@@ -19,6 +18,7 @@ const Work = () => {
       let padding: number =
         parseInt(window.getComputedStyle(box[0]).padding) / 2;
       translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
+      if (translateX < 0) translateX = 0; // Prevent reverse layout collision
     }
 
     setTranslateX();
@@ -27,19 +27,21 @@ const Work = () => {
       scrollTrigger: {
         trigger: ".work-section",
         start: "top top",
-        end: "bottom top",
+        end: () => "+=" + (translateX > 0 ? translateX : window.innerHeight),
         scrub: true,
         pin: true,
-        pinType: !ScrollTrigger.isTouch ? "transform" : "fixed",
+        pinSpacing: true,
         id: "work",
       },
     });
 
-    timeline.to(".work-flex", {
-      x: -translateX,
-      duration: 40,
-      delay: 0.2,
-    });
+    if (translateX > 0) {
+      timeline.to(".work-flex", {
+        x: -translateX,
+        duration: 40,
+        delay: 0.2,
+      });
+    }
   }, []);
   return (
     <div className="work-section" id="work">
@@ -48,19 +50,30 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {[
+            {
+              title: "Sales Data Analysis",
+              category: "Data Analysis 2024",
+              tools: "Python, Pandas, SQL, Visualization",
+            },
+            {
+              title: "Student Performance",
+              category: "Data Analytics 2024",
+              tools: "Python, Data Cleaning, EDA"
+            }
+          ].map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
               </div>
               <WorkImage image="/images/placeholder.webp" alt="" />
             </div>
