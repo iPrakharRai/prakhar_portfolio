@@ -95,12 +95,11 @@ const WhatIDo = () => {
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">Python</div>
+                <div className="what-tags">SQL</div>
                 <div className="what-tags">Pandas</div>
                 <div className="what-tags">NumPy</div>
-                <div className="what-tags">SQL</div>
-                <div className="what-tags">Excel</div>
-                <div className="what-tags">EDA</div>
-                <div className="what-tags">Data Cleaning</div>
+                <div className="what-tags">Machine Learning</div>
+                <div className="what-tags">Web Scraping</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -131,12 +130,12 @@ const WhatIDo = () => {
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
+                <div className="what-tags">Power BI</div>
+                <div className="what-tags">Tableau</div>
                 <div className="what-tags">Matplotlib</div>
                 <div className="what-tags">Seaborn</div>
-                <div className="what-tags">Dashboards</div>
-                <div className="what-tags">Reporting</div>
-                <div className="what-tags">Charts</div>
-                <div className="what-tags">Insights</div>
+                <div className="what-tags">Plotly</div>
+                <div className="what-tags">Streamlit</div>
               </div>
               <div className="what-arrow"></div>
             </div>

@@ -52,14 +52,25 @@ const Work = () => {
         <div className="work-flex">
           {[
             {
-              title: "Sales Data Analysis",
-              category: "Data Analysis 2024",
-              tools: "Python, Pandas, SQL, Visualization",
+              title: "Netflix Data Dashboard",
+              category: "Data Analysis 2026",
+              tools: "Python, Pandas, Plotly, Streamlit, EDA",
+              image: `${import.meta.env.BASE_URL}images/netflix_dash.png`,
+              link: "https://lnkd.in/gj5kbbVt"
             },
             {
-              title: "Student Performance",
-              category: "Data Analytics 2024",
-              tools: "Python, Data Cleaning, EDA"
+              title: "Diabetes Prediction Model",
+              category: "Machine Learning 2026",
+              tools: "Python, Pandas, Scikit-learn, EDA, Logistic Regression",
+              image: `${import.meta.env.BASE_URL}images/diabetes.png`,
+              link: "https://lnkd.in/dWJi_Nn2"
+            },
+            {
+              title: "IMDb Data Extraction",
+              category: "Web Scraping 2026",
+              tools: "Python, Selenium, BeautifulSoup, Data Cleaning, EDA",
+              image: `${import.meta.env.BASE_URL}images/IMDB_Logo.jpg`,
+              link: "https://lnkd.in/gBrMyHYH"
             }
           ].map((project, index) => (
             <div className="work-box" key={index}>
@@ -75,7 +86,7 @@ const Work = () => {
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
               </div>
-              <WorkImage image={`${import.meta.env.BASE_URL}images/placeholder.webp`} alt="" />
+              <WorkImage image={project.image} alt={project.title} />
             </div>
           ))}
         </div>

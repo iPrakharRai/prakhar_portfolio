@@ -20,6 +20,10 @@ const Contact = () => {
                 +91 8933975678
               </a>
             </p>
+            <h4>Location</h4>
+            <p>
+              Lucknow, Uttar Pradesh, India
+            </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>

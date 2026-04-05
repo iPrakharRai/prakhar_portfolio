@@ -15,17 +15,16 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>B.Tech CSE (AI & ML)</h4>
-                <h5>Goel Institute of Technology & Management</h5>
+                <h4>B.Tech CSE (AI & ML) - 8.5 CGPA</h4>
+                <h5>Dr. A.P.J. Abdul Kalam Technical University</h5>
               </div>
               <h3>2023 - 2027</h3>
             </div>
             <p>
-              8.5 CGPA. Pursuing B.Tech in Computer Science with a focus on data analytics, programming, and applied problem-solving.
+              Pursuing B.Tech in Computer Science & Engineering (AI & ML) with a focus on data analysis, machine learning, and programming.
             </p>
           </div>
-          
-          
+
         </div>
       </div>
     </div>

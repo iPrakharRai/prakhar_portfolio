@@ -6,11 +6,12 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-         Data analytics student with hands-on experience in data cleaning, analysis, and
-         visualization using Python, SQL, and Excel. Skilled in transforming raw data into actionable
-         insights through exploratory data analysis and structured reporting. Seeking entry-level
-         data analyst opportunities where data-driven decision-making and analytical thinking are
-         valued.
+         Data Analyst skilled in Python, SQL, and data visualization with hands
+         on experience building real-world projects. Developed an interactive
+         Netflix dashboard, created a machine learning model for diabetes
+         prediction, and published a Kaggle dataset through web scraping.
+         Passionate about transforming raw data into meaningful insights for
+         data-driven decision-making.
         </p>
       </div>
     </div>
