@@ -1,82 +1,114 @@
+import { useRef, useState, useEffect } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+const baseProjects = [
+  {
+    title: "Netflix Data Dashboard",
+    category: "Data Analysis 2026",
+    tools: "Python, Pandas, Plotly, Streamlit, EDA",
+    image: `${import.meta.env.BASE_URL}images/netflix_dash.png`,
+    link: "https://netflix-dashboard-prakhar.streamlit.app/"
+  },
+  {
+    title: "Diabetes Prediction Model",
+    category: "Machine Learning 2026",
+    tools: "Python, Pandas, Scikit-learn, EDA, Logistic Regression",
+    image: `${import.meta.env.BASE_URL}images/diabetes.png`,
+    link: "https://github.com/iPrakharRai/diabetes-prediction-ml"
+  },
+  {
+    title: "IMDb Data Extraction",
+    category: "Web Scraping 2026",
+    tools: "Python, Selenium, BeautifulSoup, Data Cleaning, EDA",
+    image: `${import.meta.env.BASE_URL}images/IMDB_Logo.jpg`,
+    link: "https://www.kaggle.com/datasets/lucifer1819/imdb-top-250-movies-clean-dataset"
+  }
+];
+
+const projects = [...baseProjects, ...baseProjects, ...baseProjects]; // Loop to create infinite illusion
 
 const Work = () => {
-  useGSAP(() => {
-    let translateX: number = 0;
-    function setTranslateX() {
-      const box = document.getElementsByClassName("work-box");
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-      if (translateX < 0) translateX = 0; // Prevent reverse layout collision
-    }
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-    setTranslateX();
+  useEffect(() => {
+    let animationId: number;
+    const scroll = () => {
+      // Auto scroll if not interacting
+      if (sliderRef.current && !isHovered && !isDragging) {
+        sliderRef.current.scrollLeft += 0.8;
+        
+        // Seamless loop reset
+        if (sliderRef.current.scrollLeft >= sliderRef.current.scrollWidth * (2 / 3)) {
+          sliderRef.current.scrollLeft = sliderRef.current.scrollWidth / 3;
+        }
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+    animationId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationId);
+  }, [isHovered, isDragging]);
 
-    let timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".work-section",
-        start: "top top",
-        end: () => "+=" + (translateX > 0 ? translateX : window.innerHeight),
-        scrub: true,
-        pin: true,
-        pinSpacing: true,
-        id: "work",
-      },
-    });
+  const slideLeft = () => {
+    if (sliderRef.current) sliderRef.current.scrollBy({ left: -500, behavior: "smooth" });
+  };
+  const slideRight = () => {
+    if (sliderRef.current) sliderRef.current.scrollBy({ left: 500, behavior: "smooth" });
+  };
 
-    if (translateX > 0) {
-      timeline.to(".work-flex", {
-        x: -translateX,
-        duration: 40,
-        delay: 0.2,
-      });
-    }
-  }, []);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - sliderRef.current!.offsetLeft);
+    setScrollLeft(sliderRef.current!.scrollLeft);
+  };
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Drag speed multiplier
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className="work-section" id="work">
-      <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
-        <div className="work-flex">
-          {[
-            {
-              title: "Netflix Data Dashboard",
-              category: "Data Analysis 2026",
-              tools: "Python, Pandas, Plotly, Streamlit, EDA",
-              image: `${import.meta.env.BASE_URL}images/netflix_dash.png`,
-              link: "https://lnkd.in/gj5kbbVt"
-            },
-            {
-              title: "Diabetes Prediction Model",
-              category: "Machine Learning 2026",
-              tools: "Python, Pandas, Scikit-learn, EDA, Logistic Regression",
-              image: `${import.meta.env.BASE_URL}images/diabetes.png`,
-              link: "https://lnkd.in/dWJi_Nn2"
-            },
-            {
-              title: "IMDb Data Extraction",
-              category: "Web Scraping 2026",
-              tools: "Python, Selenium, BeautifulSoup, Data Cleaning, EDA",
-              image: `${import.meta.env.BASE_URL}images/IMDB_Logo.jpg`,
-              link: "https://lnkd.in/gBrMyHYH"
-            }
-          ].map((project, index) => (
+      <div className="work-container section-container" style={{ position: "relative" }}>
+        <div className="work-header">
+          <h2>
+            My <span>Work</span>
+          </h2>
+        </div>
+        
+        <div 
+          className="invisible-arrow left-arrow" 
+          onClick={slideLeft}
+          title="Slide Left"
+        ></div>
+        <div 
+          className="invisible-arrow right-arrow" 
+          onClick={slideRight}
+          title="Slide Right"
+        ></div>
+
+        <div 
+          className={`work-flex ${isDragging ? 'dragging' : ''}`} 
+          ref={sliderRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => { setIsHovered(false); handleMouseLeave(); }}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
+          {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
-                  <h3>0{index + 1}</h3>
+                  <h3>0{(index % baseProjects.length) + 1}</h3>
 
                   <div>
                     <h4>{project.title}</h4>
@@ -85,8 +117,25 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
+                <div style={{ marginTop: "20px" }}>
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    style={{ 
+                      color: "var(--accentColor)", 
+                      textDecoration: "none", 
+                      fontWeight: 500,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px"
+                    }}
+                  >
+                    Visit Site
+                  </a>
+                </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} />
+              <WorkImage image={project.image} alt={project.title} link={project.link} />
             </div>
           ))}
         </div>
