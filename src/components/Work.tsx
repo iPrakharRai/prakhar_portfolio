@@ -23,6 +23,20 @@ const baseProjects = [
     tools: "Python, Selenium, BeautifulSoup, Data Cleaning, EDA",
     image: `${import.meta.env.BASE_URL}images/IMDB_Logo.jpg`,
     link: "https://www.kaggle.com/datasets/lucifer1819/imdb-top-250-movies-clean-dataset"
+  },
+  {
+    title: "IPL 2024 Dataset",
+    category: "Data Analysis 2026",
+    tools: "Python, Pandas, Plotly, Data Cleaning, EDA",
+    image: `${import.meta.env.BASE_URL}images/ipl.png`,
+    link: "https://www.kaggle.com/datasets/lucifer1819/ipl-2024-match-dataset/data"
+  },
+  {
+    title: "Car Price Prediction Dashboard",
+    category: "Machine Learning Project 2026",
+    tools: "Python, Pandas, Scikit-learn, Streamlit, EDA, Machine Learning",
+    image: `${import.meta.env.BASE_URL}images/car_price_predict_dash.png`,
+    link: "https://car-price-prediction-dashboard-prakhar.streamlit.app/"
   }
 ];
 
